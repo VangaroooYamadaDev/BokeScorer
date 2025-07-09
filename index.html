@@ -22,7 +22,7 @@
       const boke = document.getElementById("boke").value;
       const tsukkomi = document.getElementById("tsukkomi").value;
 
-      const res = await fetch("https://あなたのRenderのAPIアドレス/rate", {
+      const res = await fetch("https://bokescorer.onrender.com/rate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ boke, tsukkomi })
