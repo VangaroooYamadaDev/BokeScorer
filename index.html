@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>ツッコミ採点AI</title>
+</head>
+<body>
+  <h1>ボケとツッコミ採点</h1>
+  <label>ボケ:</label><br>
+  <textarea id="boke" rows="3" cols="50"></textarea><br><br>
+
+  <label>ツッコミ:</label><br>
+  <textarea id="tsukkomi" rows="3" cols="50"></textarea><br><br>
+
+  <button onclick="submit()">採点する</button>
+
+  <h2>結果</h2>
+  <pre id="result">ここに点数と講評が表示されます</pre>
+
+  <script>
+    async function submit() {
+      const boke = document.getElementById("boke").value;
+      const tsukkomi = document.getElementById("tsukkomi").value;
+
+      const res = await fetch("https://あなたのRenderのAPIアドレス/rate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ boke, tsukkomi })
+      });
+      const data = await res.json();
+      document.getElementById("result").textContent = data.result;
+    }
+  </script>
+</body>
+</html>
