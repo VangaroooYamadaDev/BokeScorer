@@ -46,8 +46,15 @@ def rate():
         json={"inputs": prompt}
     )
 
-    result = response.json()
-    return jsonify({"result": result[0]["generated_text"]})
+    try:
+        result = response.json()
+        output = result[0]["generated_text"]
+    except Exception as e:
+        print("APIレスポンスエラー:", e)
+        print("response.text:", response.text)
+        output = "AIの応答が失敗しました。もう一度お試しください。"
+
+    return jsonify({"result": output})
 
 if __name__ == "__main__":
     app.run(debug=True)
