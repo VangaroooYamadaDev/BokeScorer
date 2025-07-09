@@ -11,7 +11,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Hugging Face API設定
-HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
+HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models/mistralai/Mixtral-8x7B-Instruct-v0.1"
 HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
 
 headers = {
